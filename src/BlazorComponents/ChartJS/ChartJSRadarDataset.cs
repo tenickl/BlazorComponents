@@ -2,6 +2,12 @@
 {
     public class ChartJSRadarDataset : ChartJsDataset
     {
+        /// <summary>
+        /// The fill color under the line. 
+        /// AS-IS: We only accept colors as string values. Normal colors and HTML Hex colors are ok to use.
+        /// TODO: Accept some form of actual color information rathen than strings.
+        /// </summary>
+        public string BackgroundColor { get; set; }
         public int BorderWidth { get; set; } = 1;
         public string PointBackgroundColor { get; set; } = "#DB5571";
         public string PointBorderColor { get; set; } = "#6D2A39";

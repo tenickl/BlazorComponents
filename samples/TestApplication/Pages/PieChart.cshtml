@@ -28,17 +28,25 @@
             },
             Data = new ChartJsData<ChartJSPieDataset>()
             {
-                Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
+                Labels = new List<string>() { "Green", "Blue", "Gray", "Purple", "Yellow", "Red", "Black" },
                 Datasets = new List<ChartJSPieDataset>()
-                 {
-                        new ChartJSPieDataset()
-                        {
-                            BackgroundColor = "['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)']",
-                            BorderColor = "#ff6384",
-                            Label = "# of Votes from blazor",
-                            Data = new List<int>{ 19,12,5,3,3,2},
-                        }
-                 }
+             {
+                    new ChartJSPieDataset()
+                    {
+                        BackgroundColor = new List<string> {
+                            "#2ecc71",
+                            "#3498db",
+                            "#95a5a6",
+                            "#9b59b6",
+                            "#f1c40f",
+                            "#e74c3c",
+                            "#34495e"
+                        },
+                        BorderColor = "#ffffff",
+                        Label = "# of Votes from blazor",
+                        Data = new List<int>{ 12, 19, 3, 17, 28, 24, 7},
+                    }
+             }
             }
         };
     }
@@ -49,19 +57,6 @@
         blazorPieChartJS.Data.Labels.Add($"New{DateTime.Now.Second}");
         var firstDataSet = blazorPieChartJS.Data.Datasets[0];
         firstDataSet.Data.Add(DateTime.Now.Second);
-
-        //Add new dataset
-        //blazorLineChartJS.Data.Datasets.Add(new ChartJsLineDataset()
-        //{
-        //    BackgroundColor = "#cc65fe",
-        //    BorderColor = "#cc65fe",
-        //    Label = "# of Votes from blazor 1",
-        //    Data = new List<int> {20,21,12,3,4,4},
-        //    Fill = true,
-        //    BorderWidth = 2,
-        //    PointRadius = 3,
-        //    PointBorderWidth = 1
-        //});
 
         pieChartJs.UpdateChart(blazorPieChartJS);
     }
