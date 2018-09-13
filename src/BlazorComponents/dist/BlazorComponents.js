@@ -20,6 +20,14 @@ window.BlazorComponents.ChartJSInterop = {
 
         return true;
     },
+    InitializePieChart: function (data) {
+        let thisChart = initializeChartjsChart(data, 'pie');
+
+        if (!BlazorCharts.find(currentChart => currentChart.id === data.canvasId))
+            BlazorCharts.push({ id: data.canvasId, chart: thisChart });
+
+        return true;
+    },
     InitializeRadarChart: function (data) {
         let thisChart = initializeChartjsChart(data, 'radar');
 
@@ -38,6 +46,20 @@ window.BlazorComponents.ChartJSInterop = {
 
         myChart.chart = {};
         let newChart = initializeChartjsChart(data, 'line');
+        myChart.chart = newChart;
+
+        return true;
+    },
+    UpdatePieChart: function (data) {
+        if (!BlazorCharts.find(currentChart => currentChart.id === data.canvasId))
+            throw `Could not find a chart with the given id. ${data.canvasId}`;
+
+        let myChart = BlazorCharts.find(currentChart => currentChart.id === data.canvasId);
+
+        let myChartIndex = BlazorCharts.findIndex(currentChart => currentChart.id === data.canvasId);
+
+        myChart.chart = {};
+        let newChart = initializeChartjsChart(data, 'pie');
         myChart.chart = newChart;
 
         return true;
